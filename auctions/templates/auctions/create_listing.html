@@ -14,9 +14,15 @@
         <input type="text" name="image_url" placeholder="Enter image_url"><br>
 
         <label for="price">Price:</label>
-        <input type="text" name="price" placeholder="price"><br>
+        <input type="number" name="price" placeholder="price"><br>
 
-        <input type="submit" name="" value="Submit" id="">
+        <input type="submit" name="" value="Create New Item" id="">
+        <select name="cateory" id="">
+            
+            {% for category in cateories %}
+                <option value="">{{category}}</option>
+            {% endfor %}
+        </select>
     </form>
 {% endblock %}
 
