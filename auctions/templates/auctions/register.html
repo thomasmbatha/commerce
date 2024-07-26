@@ -8,14 +8,15 @@
 
             <h2>Register</h2>
 
-            {% if message %}
-                <div style="color: red; background-color: white;">{{ message }}</div>
-            {% endif %}
+
 
             <form action="{% url 'register' %}" method="post">
                 {% csrf_token %}
-                <div class="form-group">
-                    <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                <div class="form-group input-field">
+                    <input class="form-control bg-white {% if message %}is-invalid{% endif %}" id="username-input" autofocus type="text" name="username" placeholder="Username">
+                    {% if message %}
+                    <div class="username-error">{{ message }}</div>
+                    {% endif %}
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="email" name="email" placeholder="Email Address">

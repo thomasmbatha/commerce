@@ -1,3 +1,50 @@
 body {
     padding: 10px;
 }
+
+/* register */
+input.form-control {
+    background-color: white; /* Background color for default state */
+    border-color: #ced4da; /* Optional: Light border color to match a typical input field */
+}
+
+/* Override focus state to ensure background remains white */
+input.form-control:focus {
+    background-color: white; /* Background color when focused */
+    border-color: #80bdff; /* Optional: Border color change on focus for better visibility */
+    outline: none; /* Optional: Remove default outline */
+}
+
+/* Additional styling to handle invalid state if needed */
+input.form-control.is-invalid:focus {
+    background-color: white; /* Ensure background stays white when input is invalid and focused */
+    border-color: red; /* Optional: Red border color to indicate error */
+}
+
+.username-error {
+    color: red;
+}
+.form-group {
+    position: relative;
+}
+
+.is-invalid {
+    border-color: red;
+}
+
+.username-error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 62%;
+    left: 60%;
+    margin-top: 2px;
+    width: 133px;
+    background-color: white;
+    padding: 1px 1px;
+    
+}
+
+
+
+/* end of register */
