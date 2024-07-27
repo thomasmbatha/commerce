@@ -32,11 +32,24 @@ input.form-control.is-invalid:focus {
     border-color: red;
 }
 
-.username-error {
+.username_error {
     color: red;
     font-size: 12px;
     position: absolute;
-    top: 62%;
+    top: 66%;
+    left: 60%;
+    margin-top: 2px;
+    width: 133px;
+    background-color: white;
+    padding: 1px 1px;
+    
+}
+
+.password_error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 66%;
     left: 60%;
     margin-top: 2px;
     width: 133px;

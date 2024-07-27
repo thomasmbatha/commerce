@@ -34,7 +34,7 @@ def login_view(request):
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "auctions/login.html", {
-                "message": "Invalid username and/or password."
+                "validation-error": "Invalid username and/or password."
             })
     else:
         return render(request, "auctions/login.html")
@@ -55,7 +55,7 @@ def register(request):
         confirmation = request.POST["confirmation"]
         if password != confirmation:
             return render(request, "auctions/register.html", {
-                "message": "Passwords must match."
+                "password_error": "Passwords must match."
             })
 
         # Attempt to create new user
@@ -64,7 +64,7 @@ def register(request):
             user.save()
         except IntegrityError:
             return render(request, "auctions/register.html", {
-                "message": "Username already taken."
+                "username_error": "Username already taken."
             })
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
