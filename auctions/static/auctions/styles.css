@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 body {
     padding: 10px;
 }
@@ -19,6 +21,50 @@ input.form-control:focus {
 input.form-control.is-invalid:focus {
     background-color: white; /* Ensure background stays white when input is invalid and focused */
     border-color: red; /* Optional: Red border color to indicate error */
+}
+
+.input-field {
+    position: relative;
+}
+
+.input-field input {
+    height: 40px;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 0 15px;
+    border: 2px solid black;
+    background: transparent;
+    outline: none;
+    color: black;
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: grey;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.3s;
+    background: white;
+    padding: 0 5px;
+}
+
+/* When input is focused or has content */
+.input-field input:focus ~ label,
+.input-field input.not-empty ~ label {
+    top: 0;
+    font-size: 16px;
+    padding: 0 10px;
+    background: white;
+}
+
+/* Resetting label style when input is empty and not focused */
+.input-field input:not(.not-empty):not(:focus) ~ label {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
 }
 
 .username-error {
