@@ -32,7 +32,7 @@ input.form-control.is-invalid:focus {
     border-radius: 6px;
     font-size: 18px;
     padding: 0 15px;
-    border: 2px solid black;
+    border: 1px solid #cac8c8;
     background: transparent;
     outline: none;
     color: black;
