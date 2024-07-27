@@ -31,6 +31,17 @@ input.form-control.is-invalid:focus {
 .is-invalid {
     border-color: red;
 }
+.validation_error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 66%;
+    left: 44%;
+    margin-top: 2px;
+    width: 188px;
+    background-color: white;
+    padding: 1px 1px;
+}
 
 .username_error {
     color: red;

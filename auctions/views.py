@@ -34,7 +34,7 @@ def login_view(request):
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "auctions/login.html", {
-                "validation-error": "Invalid username and/or password."
+                "validation_error": "Invalid username and/or password."
             })
     else:
         return render(request, "auctions/login.html")
@@ -64,7 +64,7 @@ def register(request):
             user.save()
         except IntegrityError:
             return render(request, "auctions/register.html", {
-                "username_error": "Username already taken."
+                "username_error": "Username already exist."
             })
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
