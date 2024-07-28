@@ -13,26 +13,26 @@
             <form action="{% url 'register' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group input-field">
-                    <input class="form-control bg-white {% if username_error %}is-invalid{% endif %}" id="username-input" autofocus type="text" name="username">
+                    <input class="bg-white {% if username_error %}is-invalid{% endif %}" id="username-input" autofocus type="text" name="username">
                     <label for="username">Username</label>
                     {% if username_error %}
                         <div class="username_error">{{ username_error }}</div>
                     {% endif %}
                 </div>
-                <div class="form-group">
-                    <input class="form-control" type="email" name="email">
-                    <label for="username">Email Address</label>
+                <div class="form-group input-field">
+                    <input class="bg-white" type="email" name="email">
+                    <label for="email">Email Address</label>
                 </div>
-                <div class="form-group">
-                    <input class="form-control {% if password_error %}is-invalid{% endif %}" type="password" name="password">
-                    <label for="username">Password</label>
+                <div class="form-group input-field">
+                    <input class="bg-white {% if password_error %}is-invalid{% endif %}" type="password" name="password">
+                    <label for="password">Password</label>
                     {% if password_error %}
                         <div class="password_error">{{ password_error }}</div>
                     {% endif %}
                 </div>
-                <div class="form-group">
-                    <input class="form-control {% if password_error %}is-invalid{% endif %}" type="password" name="confirmation">
-                    <label for="username">Confirm Password</label>
+                <div class="form-group input-field">
+                    <input class="bg-white {% if password_error %}is-invalid{% endif %}" type="password" name="confirmation">
+                    <label for="Confirm-password">Confirm Password</label>
                     {% if password_error %}
                         <div class="password_error">{{ password_error }}</div>
                     {% endif %}

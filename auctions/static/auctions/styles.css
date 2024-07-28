@@ -27,17 +27,20 @@ input.form-control.is-invalid:focus {
     position: relative;
 }
 
+/* Input field general styles */
 .input-field input {
     height: 40px;
+    width: 352px;
     border-radius: 6px;
-    font-size: 18px;
+    font-size: 15px;
     padding: 0 15px;
     border: 1px solid #cac8c8;
-    background: transparent;
-    outline: none;
+    background: white; /* Ensure white background */
     color: black;
+    outline: none;
 }
 
+/* Input field label styles */
 .input-field label {
     position: absolute;
     top: 50%;
@@ -51,9 +54,9 @@ input.form-control.is-invalid:focus {
     padding: 0 5px;
 }
 
-/* When input is focused or has content */
+/* Adjust label position and size when input is focused or has content */
 .input-field input:focus ~ label,
-.input-field input.not-empty ~ label {
+.input-field input:not(:placeholder-shown) ~ label {
     top: 0;
     font-size: 16px;
     padding: 0 10px;
@@ -65,6 +68,18 @@ input.form-control.is-invalid:focus {
     top: 50%;
     transform: translateY(-50%);
     font-size: 16px;
+}
+
+/* Override autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    background-color: white !important;
+    color: black !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .username-error {
