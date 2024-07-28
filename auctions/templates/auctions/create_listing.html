@@ -16,14 +16,19 @@
         <label for="price">Price:</label>
         <input type="number" name="price" placeholder="price"><br>
 
+        <div class="form-group">
+            <label for="category">Categories:</label>
+            <select name="category" id="category">
+                {% for category in categories %}
+                    <option value="{{ category.id }}"> {{ category.category_name }} </option>
+                {% endfor %}
+            </select>
+        </div>
+        
+
         <input type="submit" name="" value="Create New Item" id="">
-        <select name="cateory" id="">
-            
-            {% for category in cateories %}
-                <option value="">{{category}}</option>
-            {% endfor %}
-        </select>
+
     </form>
 {% endblock %}
 
-{% comment %} 13:24 / 1:15:02 (CS50 WEB) COMMERCE - PROJECT 2 | SOLUTION {% endcomment %}
+{% comment %}  (CS50 WEB) COMMERCE - PROJECT 2 | SOLUTION {% endcomment %}

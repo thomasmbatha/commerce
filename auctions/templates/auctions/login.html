@@ -13,14 +13,14 @@
                 <form action="{% url 'login' %}" method="post">
                     {% csrf_token %}
                     <div class="form-group input-field">
-                        <input autofocus class="{% if validation_error %}is-invalid{% endif %}" type="text" name="username" placeholder="Username">
+                        <input autofocus class="{% if validation_error %}is-invalid{% endif %}" type="text" name="username">
                         <label for="username">Username</label>
                         {% if validation_error %}
                             <div class="validation_error">{{ validation_error }}</div>
                         {% endif %}
                     </div>
                     <div class="form-group input-field">
-                        <input class="{% if validation_error %}is-invalid{% endif %}" type="password" name="password" placeholder="Password">
+                        <input class="{% if validation_error %}is-invalid{% endif %}" type="password" name="password">
                         <label for="password">Password</label>
                     </div>
                     <input class="btn btn-primary" type="submit" value="Login">
