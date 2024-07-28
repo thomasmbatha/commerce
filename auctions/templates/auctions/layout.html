@@ -13,9 +13,9 @@
         <h1>Auctions</h1>
         <div>
             {% if user.is_authenticated %}
-                Signed in as <strong>{{ user.username }}</strong>.
+                <p>Signed in as <strong style="color:#00f108">{{ user.username }}</strong>.</p>
             {% else %}
-                Not signed in.
+               <p style="color:red">Not signed in.</p>
             {% endif %}
         </div>
         <ul class="nav">
