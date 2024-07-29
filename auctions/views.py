@@ -140,5 +140,5 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
         
-# 43:53 / 1:15:02
+# 46:26 / 1:15:02
 
