@@ -5,22 +5,35 @@ from django.shortcuts import render,get_object_or_404
 from django.urls import reverse
 from .models import User, Category, AuctionListing
 
-def listing(request, id):
+def listing_view(request, id):
     listing_data = get_object_or_404(AuctionListing, pk=id)
-    check_listing_in_watchlist = True
+    check_listing_in_watchlist = request.user in listing_data.watchlist.all()
     return render(request, "auctions/listing.html", {
         "listing": listing_data,
         "check_listing_in_watchlist": check_listing_in_watchlist,
     })
 
+def watchlist_view(request):
+    if request.user.is_authenticated:
+        listings = request.user.listing_watchlist.all()
+        return render(request, "auctions/watchlist.html", {
+            "listings": listings
+        })
+    else:
+        return HttpResponseRedirect(reverse("login"))
+
 def remove_watchlist(request, id):
-    return
-    
+    listing_data = AuctionListing.objects.get(pk=id)  
+    current_user = request.user
+    listing_data.watchlist.remove(current_user)
+    return HttpResponseRedirect(reverse("listing", args=(id, )))
+
 def add_watchlist(request, id):
-    listing_data = listing.objects.get(pk=id)
+    listing_data = AuctionListing.objects.get(pk=id)  
     current_user = request.user
     listing_data.watchlist.add(current_user)
-    return HttpResponseRedirect(reverse(listing), args=("listing_data.id"))
+    return HttpResponseRedirect(reverse("listing", args=(id, )))
+
 
 def index(request):
     active_listings = AuctionListing.objects.filter(is_active=True)
