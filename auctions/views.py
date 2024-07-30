@@ -108,7 +108,7 @@ def create_listing(request):
         title = request.POST["title"]
         description = request.POST["description"]
         image_url = request.POST["image_url"]
-        price = request.POST["price"]
+        price = request.POST["starting_bid"]
         category_id = request.POST["category"]
         
         current_user = request.user
@@ -182,5 +182,5 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
         
-# 46:26 / 1:15:02
+# 1:08:22 / 1:15:02
 
