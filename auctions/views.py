@@ -1,17 +1,56 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from .models import User, Category, AuctionListing
+from .models import User, Category, AuctionListing, Comment, Bid
 
 def listing_view(request, id):
     listing_data = get_object_or_404(AuctionListing, pk=id)
     check_listing_in_watchlist = request.user in listing_data.watchlist.all()
+    all_comments = Comment.objects.filter(listing=listing_data)
     return render(request, "auctions/listing.html", {
         "listing": listing_data,
         "check_listing_in_watchlist": check_listing_in_watchlist,
+        "all_comments": all_comments
     })
+
+def add_bid(request, id):
+    new_bid = request.POST.get('starting_bid')
+    listing_data = AuctionListing.objects.get(pk=id)
+    
+    if new_bid and int(new_bid) > listing_data.starting_bid.bid:
+        updated_bid = Bid(user=request.user, bid=int(new_bid))
+        updated_bid.save()
+        listing_data.starting_bid = updated_bid
+        listing_data.save()
+        
+        return render(request, "auctions/listing.html", {
+            "listing": listing_data,
+            "message": "Bid was updated successfully",
+            "updated": True
+        })
+    else:
+        return render(request, "auctions/listing.html", {
+            "listing": listing_data,
+            "message": "Bid update failed",
+            "updated": False
+        })
+
+
+def add_comment(request, id):
+    current_user = request.user
+    listing_data = AuctionListing.objects.get(pk=id)
+    message = request.POST['new_comment']
+
+    new_comment = Comment(
+        author = current_user,
+        listing = listing_data,
+        message = message
+    )
+
+    new_comment.save()
+    return HttpResponseRedirect(reverse("listing", args=(id, )))
 
 def watchlist_view(request):
     if request.user.is_authenticated:
@@ -76,11 +115,14 @@ def create_listing(request):
 
         category_data = get_object_or_404(Category, id=category_id)
 
+        bid = Bid(bid=int(price), user=current_user)
+        bid.save()
+
         new_listing = AuctionListing(
             title=title,
             description=description,
             image_url=image_url,
-            starting_bid=float(price),
+            starting_bid=bid,
             category=category_data,
             owner=current_user,
         )
