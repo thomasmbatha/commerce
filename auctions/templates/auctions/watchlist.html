@@ -1,17 +1,27 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Watch List</h2>
-    <div class="row mx-3">
-        {% for listing in listings %}
-            <div class="card mx-3 mb-3" style="width: 18rem;">
-                <img src="{{ listing.image_url }}" class="card-img-top" alt="{{ listing.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ listing.title }}</h5>
-                    <p class="card-text">{{ listing.description }}</p>
-                    <a href="{% url 'listing' id=listing.id %}" class="btn btn-primary">Details</a>
+<div class="container">
+    <h2>Your Watchlist</h2>
+    {% if listings %}
+        <div class="row mx-3">
+            {% for listing in listings %}
+                <div class="card mx-3 mb-3" style="width: 18rem;">
+                    <img src="{{ listing.image_url }}" class="card-img-top" alt="{{ listing.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ listing.title }}</h5>
+                        <p class="card-text">{{ listing.description }}</p>
+                        <a href="{% url 'listing' id=listing.id %}" class="btn btn-primary">Details</a>
+                        <form action="{% url 'remove_watchlist' id=listing.id %}" method="POST" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm mt-2">Remove from Watchlist</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No active listings in your watchlist.</p>
+    {% endif %}
+</div>
 {% endblock %}
