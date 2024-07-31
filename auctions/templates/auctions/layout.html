@@ -3,13 +3,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block title %}Auctions{% endblock %}</title>
+        <title>X-AUCTIONS{% block title %} | Home{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+          <!-- Favicons -->
+        <link rel="icon" type="image/png" href="{% static 'auctions/img/favicon.png' %}">
+        <link rel="apple-touch-icon" type="image/png" href="{% static 'auctions/img/apple-touch-icon.png' %}">
+      
     </head>
     <body>
-        <h1>Auctions</h1>
+        <h1>X-AUCTIONS</h1>
         <div>
             {% if user.is_authenticated %}
                 <p>Signed in as <strong style="color:#00f108">{{ user.username }}</strong>.</p>

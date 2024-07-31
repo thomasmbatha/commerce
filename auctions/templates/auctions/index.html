@@ -1,5 +1,5 @@
 {% extends "auctions/layout.html" %}
-
+{% block title %}| Home{% endblock %}
 {% block body %}
     <h2>Active Listings</h2>
     <form action="{% url 'display' %}" method="POST" class="my-3">
