@@ -9,47 +9,53 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
           <!-- Favicons -->
-        <link rel="icon" type="image/png" href="{% static 'auctions/img/favicon.png' %}">
-        <link rel="apple-touch-icon" type="image/png" href="{% static 'auctions/img/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" href="{% static 'auctions/img/x-favicon.png' %}">
+        <link rel="apple-touch-icon" type="image/png" href="{% static 'auctions/img/x-apple-touch-icon.png' %}">
       
     </head>
     <body>
-        <h1>X-AUCTIONS</h1>
-        <div>
-            {% if user.is_authenticated %}
-                <p>Signed in as <strong style="color:#00f108">{{ user.username }}</strong>.</p>
-            {% else %}
-               <p style="color:red">Not signed in.</p>
-            {% endif %}
-        </div>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
-            </li>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center ">
+        <div class="container d-flex justify-content-between align-items-center">
 
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'display' %}">Categories</a> <!-- Assuming 'display' lists categories -->
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'watchlist' %}">Watchlist</a> <!-- Ensure 'watchlist' URL pattern exists -->
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'create_listing' %}">Create Listing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-            {% endif %}
-        </ul>
-        <hr>
+        <div class="logo">
+            <h1 class="text-light"><a><span>X-AUCTIONS</span></a></h1>
+        </div>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+            <li><a class="" href="{% url 'index' %}">Home</a></li>
+            <li><a class="active" href="{% url 'display' %}">Category</a></li>
+            <li><a href="{% url 'watchlist' %}">Watchlist</a></li>
+            <li><a href="{% url 'create_listing' %}">Create Auction</a></li>
+            <li><a href="#">Previous Auction</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <div class="ml-auto">
+            <a href="{% url 'login' %}" class="btn btn-login">Log In</a>
+            <a href="{% url 'register' %}" class="btn btn-register ml-2">Register</a>
+        </div>
+
+        </div>
+    </header><!-- End Header -->
+        
+  <main id="main">
+
+    <!-- ======= Our category Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Our category</h2>
+          <ol>
+            <li>{% block crumbs %}Our category {% endblock %}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Our Category Section -->
         {% block body %}
         {% endblock %}
         <script src="{% static 'auctions/script.js' %}"></script>

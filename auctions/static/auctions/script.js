@@ -1,12 +1,3 @@
-// document.querySelectorAll('.input-field input').forEach(input => {
-//     input.addEventListener('input', () => {
-//         if (input.value) {
-//             input.classList.add('not-empty');
-//         } else {
-//             input.classList.remove('not-empty');
-//         }
-//     });
-// });
 document.addEventListener('DOMContentLoaded', () => {
     const inputs = document.querySelectorAll('.input-field input');
 
