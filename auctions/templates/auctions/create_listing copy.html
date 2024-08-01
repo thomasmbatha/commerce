@@ -1,0 +1,33 @@
+{% comment %} {% extends "auctions/layout.html" %}
+{% block title %}| Add Auction{% endblock %}
+
+{% block body %} {% endcomment %}
+    {% comment %} <h2>Create Auction</h2> {% endcomment %}
+    {% comment %} <form action="{% url 'create_listing' %}" method="POST"> {% endcomment %}
+        {% comment %} {% csrf_token %} {% endcomment %}
+        {% comment %} <label for="title">Title:</label> {% endcomment %}
+        {% comment %} <input type="text" name="title" placeholder="Enter title"><br> {% endcomment %}
+
+        {% comment %} <label for="description">Description:</label> {% endcomment %}
+        {% comment %} <input type="text" name="description" placeholder="Enter description"><br> {% endcomment %}
+
+        {% comment %} <label for="image_url">Image Url:</label> {% endcomment %}
+        {% comment %} <input type="text" name="image_url" placeholder="Enter image_url"><br> {% endcomment %}
+
+        {% comment %} <label for="starting_bid">Price:</label> {% endcomment %}
+        {% comment %} <input type="number" min="0" name="starting_bid" placeholder="price"><br> {% endcomment %}
+
+        {% comment %} <div class="form-group"> {% endcomment %}
+            {% comment %} <label for="category">Categories:</label> {% endcomment %}
+            {% comment %} <select name="category" id="category">
+                {% for category in categories %}
+                    <option value="{{ category.id }}"> {{ category.category_name }} </option>
+                {% endfor %}
+            </select>
+        </div>
+        
+
+        <input type="submit" name="" value="Create New Item" id="">
+
+    </form>
+{% endblock %} {% endcomment %}

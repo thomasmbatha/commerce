@@ -2,6 +2,61 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <title>X-AUCTIONS{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'auctions/img/x-favicon.png' %}">
+    <link rel="apple-touch-icon" type="image/png" href="{% static 'auctions/img/x-apple-touch-icon.png' %}">
+</head>
+<body>
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h1 class="text-light"><a href="#"><span>X-AUCTIONS</span></a></h1>
+        </div>
+        <nav id="navbar" class="navbar">
+          <ul>
+              <li><a class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+              <li><a class="{% if request.resolver_match.url_name == 'display' %}active{% endif %}" href="{% url 'display' %}">Category</a></li>
+              <li><a class="{% if request.resolver_match.url_name == 'watchlist' %}active{% endif %}" href="{% url 'watchlist' %}">Watchlist</a></li>
+              <li><a class="{% if request.resolver_match.url_name == 'create_listing' %}active{% endif %}" href="{% url 'create_listing' %}">Create Auction</a></li>
+              <li><a href="#">Previous Auction</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      
+        <div class="ml-auto">
+            <a href="{% url 'login' %}" class="btn btn-login">Log In</a>
+            <a href="{% url 'register' %}" class="btn btn-register ml-2">Register</a>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Our category</h2>
+                <ol>
+                    <li>{% block crumbs %}Our category{% endblock %}</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    {% block body %}{% endblock %}
+</main>
+
+<script src="{% static 'auctions/script.js' %}"></script>
+</body>
+</html>
+
+{% comment %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>X-AUCTIONS{% block title %} | Home{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -60,4 +115,4 @@
         {% endblock %}
         <script src="{% static 'auctions/script.js' %}"></script>
     </body>
-</html>
+</html> {% endcomment %}

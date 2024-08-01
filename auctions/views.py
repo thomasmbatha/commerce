@@ -132,6 +132,7 @@ def index(request):
         "categories": all_categories,
     })
 
+
 # View to filter auction listings based on category
 def display(request):
     if request.method == "POST":
@@ -143,13 +144,13 @@ def display(request):
             active_listings = AuctionListing.objects.filter(is_active=True)
         
         all_categories = Category.objects.all()
-        return render(request, "auctions/index.html", {
+        return render(request, "auctions/display.html", {  # Ensure this is correct
             "listings": active_listings,
             "categories": all_categories,
         })
     else:
-        # Redirect to the homepage if not a POST request
         return HttpResponseRedirect(reverse("index"))
+
 
 # View to handle the creation of a new auction listing
 def create_listing(request):
