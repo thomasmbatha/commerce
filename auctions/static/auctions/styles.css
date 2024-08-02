@@ -509,7 +509,7 @@ input:-webkit-autofill:active {
   }
   
   .contact .php-email-form button[type=submit] {
-    background: #68A4C4;
+    background: #008080;
     border: 0;
     padding: 10px 24px;
     color: #fff;
@@ -520,17 +520,6 @@ input:-webkit-autofill:active {
     background: #8dbad2;
   }
   
-  @keyframes animate-loading {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-
   /*--------------------------------------------------------------
 # End of Contact
 --------------------------------------------------------------*/
