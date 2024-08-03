@@ -161,19 +161,16 @@ def create_listing(request):
         price = request.POST.get("starting_bid")
         category_id = request.POST.get("category")
         
-        # Check if all required fields are provided
         if not all([title, description, image_url, price, category_id]):
             messages.error(request, "All fields are required.")
             return render(request, "auctions/create_listing.html", {
                 "categories": Category.objects.all()
             })
         
-        # Retrieve the category or return a 404 error if not found
         category_data = get_object_or_404(Category, id=category_id)
         bid = Bid(bid=int(price), user=request.user)
         bid.save()
         
-        # Create and save the new listing
         new_listing = AuctionListing(
             title=title,
             description=description,
@@ -186,10 +183,11 @@ def create_listing(request):
         messages.success(request, "Listing created successfully.")
         return HttpResponseRedirect(reverse("index"))
     
-    # Render the listing creation page
     return render(request, "auctions/create_listing.html", {
         "categories": Category.objects.all()
     })
+
+
 
 # View to handle user login
 def login_view(request):
