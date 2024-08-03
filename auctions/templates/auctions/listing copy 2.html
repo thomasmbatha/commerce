@@ -1,0 +1,51 @@
+{% extends "auctions/layout.html" %}
+{% block title %}| Current Auctions{% endblock %}
+
+{% block body %}
+ <!-- ======= Portfolio Details Section ======= -->
+ <section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-8">
+          <div class="portfolio-details-slider">
+            <div class=" align-items-center">
+
+              <div class="">
+                <img src="{{ listing.image_url }}" alt="{{ listing.title }}" height="400px" class="img-fluid">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="portfolio-info">
+            <h3>Details</h3>
+            <ul>
+              <li><strong>Title</strong>: Web design</li>
+              <li><strong>Description</strong>: ASU Company</li>
+              <li><strong>Owner</strong>: 01 March, 2020</li>
+              <li><strong>Price</strong>: <a href="#">www.example.com</a></li>
+            </ul>
+          </div>
+          
+          <div class="portfolio-description">
+            <h2>Full Description</h2>
+            <p></p>
+          </div>
+
+          <div class="portfolio-description">
+            <h2>Comments</h2>
+            <p></p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Details Section -->
+
+
+{% endblock %}

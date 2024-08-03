@@ -37,7 +37,7 @@
 </div>
 
 <h2>Item: {{ listing.title }}</h2>
-<img src="{{ listing.image_url }}" alt="{{ listing.title }}" height="400px" class="img-fluid">
+{% comment %} <img src="{{ listing.image_url }}" alt="{{ listing.title }}" height="400px" class="img-fluid"> {% endcomment %}
 <p>{{ listing.description }}</p>
 <p>Owner: {{ listing.owner }}</p>
 <h6><strong>R</strong> {{ listing.starting_bid.bid }}</h6>
