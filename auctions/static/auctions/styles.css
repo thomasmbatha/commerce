@@ -405,13 +405,13 @@ input:-webkit-autofill:active {
 
 
 /*--------------------------------------------------------------
-# Contact
+# Create Auction
 --------------------------------------------------------------*/
-.contact {
+.create-action {
     padding-bottom: 30px;
   }
   
-  .contact .info-box {
+  .create-action .info-box {
     color: #444;
     text-align: center;
     box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
@@ -419,7 +419,7 @@ input:-webkit-autofill:active {
     margin-bottom: 30px;
   }
   
-  .contact .info-box i {
+  .create-action .info-box i {
     font-size: 32px;
     color: #68A4C4;
     border-radius: 50%;
@@ -427,27 +427,27 @@ input:-webkit-autofill:active {
     border: 2px dotted #a2cce3;
   }
   
-  .contact .info-box h3 {
+  .create-action .info-box h3 {
     font-size: 20px;
     color: #666;
     font-weight: 700;
     margin: 10px 0;
   }
   
-  .contact .info-box p {
+  .create-action .info-box p {
     padding: 0;
     line-height: 24px;
     font-size: 14px;
     margin-bottom: 0;
   }
   
-  .contact .php-email-form {
+  .create-action .email-form {
     box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
     padding: 30px;
     margin-bottom: 30px;
   }
   
-  .contact .php-email-form .error-message {
+  .create-action .email-form .error-message {
     display: none;
     color: #fff;
     background: #ed3c0d;
@@ -456,11 +456,11 @@ input:-webkit-autofill:active {
     font-weight: 600;
   }
   
-  .contact .php-email-form .error-message br+br {
+  .create-action .email-form .error-message br+br {
     margin-top: 25px;
   }
   
-  .contact .php-email-form .sent-message {
+  .create-action .email-form .sent-message {
     display: none;
     color: #fff;
     background: #18d26e;
@@ -469,14 +469,14 @@ input:-webkit-autofill:active {
     font-weight: 600;
   }
   
-  .contact .php-email-form .loading {
+  .create-action .email-form .loading {
     display: none;
     background: #fff;
     text-align: center;
     padding: 15px;
   }
   
-  .contact .php-email-form .loading:before {
+  .create-action .email-form .loading:before {
     content: "";
     display: inline-block;
     border-radius: 50%;
@@ -488,27 +488,27 @@ input:-webkit-autofill:active {
     animation: animate-loading 1s linear infinite;
   }
   
-  .contact .php-email-form input,
-  .contact .php-email-form textarea {
+  .create-action .email-form input,
+  .create-action .email-form textarea {
     border-radius: 0;
     box-shadow: none;
     font-size: 14px;
   }
   
-  .contact .php-email-form input::focus,
-  .contact .php-email-form textarea::focus {
+  .create-action .email-form input::focus,
+  .create-action .email-form textarea::focus {
     background-color: #68A4C4;
   }
   
-  .contact .php-email-form input {
+  .create-action .email-form input {
     padding: 10px 15px;
   }
   
-  .contact .php-email-form textarea {
+  .create-action .email-form textarea {
     padding: 12px 15px;
   }
   
-  .contact .php-email-form button[type=submit] {
+  .create-action .email-form button[type=submit] {
     background: #008080;
     border: 0;
     padding: 10px 24px;
@@ -516,10 +516,10 @@ input:-webkit-autofill:active {
     transition: 0.4s;
   }
   
-  .contact .php-email-form button[type=submit]:hover {
+  .create-action .email-form button[type=submit]:hover {
     background: #8dbad2;
   }
   
   /*--------------------------------------------------------------
-# End of Contact
+# End of Create Auction
 --------------------------------------------------------------*/

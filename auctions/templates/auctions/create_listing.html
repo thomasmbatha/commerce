@@ -1,17 +1,25 @@
 {% extends "auctions/layout.html" %}
 {% block title %}| Add Auction{% endblock %}
-{% block heading %}Add Listing{% endblock %}
-{% block crumbs %}Add Listing Crumbs{% endblock %}
+{% block heading %}Add Auction{% endblock %}
+{% block crumbs %}
+    <div>
+        {% if user.is_authenticated %}
+            <p>Signed in as <strong style="color:#00f108">{{ user.username }}</strong>.</p>
+        {% else %}
+        <p style="color:red">Not signed in.</p>
+        {% endif %}
+    </div>
+{% endblock %}
 
 {% block body %}
-    <!-- ======= Contact Section ======= -->
-    <section class="contact mt-3" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <!-- ======= Create Auction Section ======= -->
+    <section class="create-action mt-3" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
         <div class="container">
   
           <div class="row">
   
             <div class="col-lg-12">
-              <form action="{% url 'create_listing' %}" method="POST" role="form" class="php-email-form">
+              <form action="{% url 'create_listing' %}" method="POST" role="form" class="email-form">
                 {% csrf_token %}
                 <div class="row"><!-- Title -->
                     <div class="col-md-2 form-group">
@@ -79,7 +87,7 @@
                         <p>:</p>
                     </div>
 
-                    <div class="col-md-9 form-group mt-3 mt-md-0">
+                    <div class="col-md-9 form-group mt-3 mt-md-0"> <!-- Submit button -->
                       <select name="category" id="category" class="form-control">
                           {% for category in categories %}
                               <option value="{{ category.id }}"> {{ category.category_name }} </option>
@@ -88,12 +96,12 @@
                   </div>
                 </div>
 
-                <div class="text-center"><button type="submit">Create Auction</button></div>
+                <div class="text-right"><button type="submit">Add Auction</button></div>
               </form>
             </div>
   
           </div>
   
         </div>
-      </section><!-- End Contact Section -->
+      </section><!-- End Create Auction Section -->
 {% endblock %}
