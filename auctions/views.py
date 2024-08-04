@@ -38,7 +38,7 @@ def close_auction(request, id):
         listing_data.is_active = False
         listing_data.save()
         
-        messages.success(request, "Congratulations! You have closed this auction.")
+        messages.success(request, "Congratulations! You have ended this auction.")
     else:
         messages.error(request, "You do not have permission to close this auction.")
     
@@ -69,20 +69,25 @@ def add_bid(request, id):
 
 # View to add a new comment to an auction listing
 def add_comment(request, id):
-    # Retrieve the listing or return a 404 error if not found
+    # Retrieve the auction listing based on the provided id
     listing_data = get_object_or_404(AuctionListing, pk=id)
-    # Get the new comment message from the POST request
+    
+    # Get the new comment from the POST request
     message = request.POST.get('new_comment')
     
-    # Check if the comment message is not empty
+    # Check if the message is not empty
     if message:
+        # Create a new Comment object with the current user, listing, and message
         new_comment = Comment(author=request.user, listing=listing_data, message=message)
+        # Save the new comment to the database
         new_comment.save()
+        # Display a success message to the user
         messages.success(request, "Comment added successfully.")
     else:
+        # Display an error message if the comment is empty
         messages.error(request, "Comment cannot be empty.")
     
-    # Redirect to the listing page
+    # Redirect to the listing page after adding the comment
     return HttpResponseRedirect(reverse("listing", args=(id, )))
 
 # View to display the current user's watchlist

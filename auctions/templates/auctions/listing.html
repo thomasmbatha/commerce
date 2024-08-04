@@ -5,7 +5,8 @@
   <div class="container">
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}" role="alert">
+            <div class="alert 
+                {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% else %}alert-info{% endif %}" role="alert">
                 {{ message }}
             </div>
         {% endfor %}
@@ -59,65 +60,71 @@
               <p>{{ listing.description }}</p>
             </div>
 
-            <div class="entry-footer d-flex align-items-center">
-              <div class="footer-section d-flex align-items-center me-3">
-                <i class="bi bi-folder fs-5 me-2"></i>
-                {% if is_owner %}
-                  <form action="{% url 'close_auction' id=listing.id %}" method="POST" class="mb-0">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger btn-sm">Close Auction</button>
-                  </form>
-                {% endif %}
-              </div>
-            
+            <div class="entry-footer d-flex align-items-center justify-content-between">
+  
               <div class="footer-section d-flex align-items-center">
-                <i class="bi bi-tags fs-5 me-2"></i>
                 {% if user.is_authenticated %}
                   <form action="{% url 'add_bid' id=listing.id %}" method="POST" class="d-flex align-items-center mb-0">
                     {% csrf_token %}
                     <input type="number" placeholder="Add New Bid" min="0" name="starting_bid" class="form-control form-control-sm me-2" style="width: 120px;">
-                    <button class="btn btn-primary btn-sm" type="submit" style="color: #40E0D0;">Submit Bid</button>
+                    <button class="btn btn-secondary btn-sm ml-2" type="submit">Submit Bid</button>
                   </form>
                 {% endif %}
               </div>
+            
+              <div class="footer-section d-flex align-items-center ms-auto">
+                {% if is_owner %}
+                  <form action="{% url 'close_auction' id=listing.id %}" method="POST" class="mb-0">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">End Auction</button>
+                  </form>
+                {% endif %}
+              </div>
+              
             </div>
+            
             
 
           </article><!-- End blog entry -->
 
           <div class="blog-comments">
 
-            <h4 class="comments-count">Comments</h4>
+    <h4 class="comments-count">Comments</h4>
 
-            <div id="comment-1" class="comment">
-              <div class="d-flex">
-                {% for comment in all_comments %}
-                  <div>
-                    <h5><a href="">{{ comment.author }}</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
+    <div id="comment-1" class="comment">
+        {% if all_comments %}
+            {% for comment in all_comments %}
+                <div class="comment-item">
+                    <h5>
+                        <a href="">{{ comment.author }}</a>
+                    </h5>
                     <p>{{ comment.message }}</p>
-                  </div>
-                {% empty %}
-                  <p>No comments yet.</p>
-                {% endfor %}
-              </div>
-            </div><!-- End comment #1 -->
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No comments yet.</p>
+        {% endif %}
+    </div><!-- End comment #1 -->
 
-            <div class="reply-form">
-              <h4>Leave a Comment</h4>
-              {% if user.is_authenticated %}
-                <form action="{% url 'add_comment' id=listing.id %}" method="POST">
-                  {% csrf_token %}
-                  <div class="row">
+    <div class="reply-form">
+        <h4>Leave a Comment</h4>
+        {% if user.is_authenticated %}
+            <form action="{% url 'add_comment' id=listing.id %}" method="POST">
+                {% csrf_token %}
+                <div class="row">
                     <div class="col form-group">
-                      <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
+                        <input name="new_comment" class="form-control form-control-lg" placeholder="Your Comment*" required>
                     </div>
-                  </div>
-                  <button type="submit" class="btn btn-teal">Post Comment</button>
-                </form>
-              {% endif %}
-            </div>
+                </div>
+                <button type="submit" class="btn btn-teal">Post Comment</button>
+            </form>
+        {% else %}
+            <p>You must be logged in to post a comment.</p>
+        {% endif %}
+    </div>
 
-          </div><!-- End blog comments -->
+</div><!-- End blog comments -->
+
 
         </div><!-- End blog entries list -->
 
