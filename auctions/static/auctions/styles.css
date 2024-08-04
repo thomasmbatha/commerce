@@ -270,12 +270,31 @@ input:-webkit-autofill:active {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+
 .btn-full:hover {
     color: #fff;
     background-color: #008080;
-    border-color: #40E0D0;
+    border-color: #008080;
 }
 
+
+.btn-teal {
+  color: #fff;
+  background-color: #008080;
+  border-color: #008080;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+.btn-teal:hover {
+  color: #fff;
+  background-color: #40E0D0;
+  border-color: #40E0D0;
+}
 
   /*--------------------------------------------------------------
 # End of header
