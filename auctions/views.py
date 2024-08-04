@@ -147,14 +147,16 @@ def display(request):
             active_listings = AuctionListing.objects.filter(is_active=True, category=category)
         else:
             active_listings = AuctionListing.objects.filter(is_active=True)
-        
-        all_categories = Category.objects.all()
-        return render(request, "auctions/display.html", {  # Ensure this is correct
-            "listings": active_listings,
-            "categories": all_categories,
-        })
     else:
-        return HttpResponseRedirect(reverse("index"))
+        active_listings = AuctionListing.objects.filter(is_active=True)
+
+    all_categories = Category.objects.all()
+    return render(request, "auctions/display.html", {
+        "listings": active_listings,
+        "categories": all_categories,
+    })
+
+
 
 
 # View to handle the creation of a new auction listing
@@ -214,7 +216,7 @@ def login_view(request):
 # View to handle user logout
 def logout_view(request):
     logout(request)
-    messages.success(request, "You have been logged out.")
+    messages.success(request, "Logged out successfully.")
     return HttpResponseRedirect(reverse("index"))
 
 # View to handle user registration
