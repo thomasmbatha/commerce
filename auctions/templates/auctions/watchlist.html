@@ -1,9 +1,10 @@
 {% extends "auctions/layout.html" %}
-{% block title %}| Watchlist{% endblock %}
+{% block title %} | Watchlist{% endblock %}
+{% block heading %}Your Watchlist{% endblock %}
+{% block crumbs %}{% endblock %}
 
 {% block body %}
 <div class="container">
-    <h2>Your Watchlist</h2>
     {% if listings %}
         <div class="row mx-3">
             {% for listing in listings %}
