@@ -205,20 +205,22 @@ def create_listing(request):
 
 # View to handle user login
 def login_view(request):
+    validation_error = None
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
         
-        # Check if authentication is successful
         if user is not None:
             login(request, user)
             return HttpResponseRedirect(reverse("index"))
         else:
-            messages.error(request, "Invalid username and/or password.")
+            validation_error = "Invalid username and/or password."
     
-    # Render the login page
-    return render(request, "auctions/login.html")
+    return render(request, "auctions/login.html", {
+        "validation_error": validation_error,
+    })
+
 
 # View to handle user logout
 def logout_view(request):
@@ -228,6 +230,9 @@ def logout_view(request):
 
 # View to handle user registration
 def register(request):
+    username_error = None
+    password_error = None
+
     if request.method == "POST":
         username = request.POST.get("username")
         email = request.POST.get("email")
@@ -236,18 +241,20 @@ def register(request):
         
         # Check if password and confirmation match
         if password != confirmation:
-            messages.error(request, "Passwords must match.")
-            return render(request, "auctions/register.html")
-        
-        try:
-            # Create a new user
-            user = User.objects.create_user(username, email, password)
-            user.save()
-            login(request, user)
-            messages.success(request, "Registration successful.")
-            return HttpResponseRedirect(reverse("index"))
-        except IntegrityError:
-            messages.error(request, "Username already exists.")
+            password_error = "Passwords must match."
+        else:
+            try:
+                # Create a new user
+                user = User.objects.create_user(username, email, password)
+                user.save()
+                login(request, user)
+                messages.success(request, "Registration successful.")
+                return HttpResponseRedirect(reverse("index"))
+            except IntegrityError:
+                username_error = "Username already exists."
     
-    # Render the registration page
-    return render(request, "auctions/register.html")
+    return render(request, "auctions/register.html", {
+        "username_error": username_error,
+        "password_error": password_error,
+    })
+

@@ -94,7 +94,7 @@ input:-webkit-autofill:active {
 }
 
 .is-invalid {
-    border-color: red;
+  border-color: red;
 }
 .validation_error {
     color: red;
