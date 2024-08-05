@@ -37,7 +37,7 @@
             <div class="portfolio-item">
                 <img src="{{ listing.image_url }}" class="img-fluid" alt="{{ listing.title }}">
                 <div class="portfolio-info">
-                <a href=""></a><h3>Details</h3></a>
+                  <h3><a href="{% url 'listing' id=listing.id %}" class="btn btn-outline">Details</a></h3>
                 <div>
                     <a href="{{ listing.image_url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
                     <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
