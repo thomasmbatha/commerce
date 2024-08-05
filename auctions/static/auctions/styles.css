@@ -307,16 +307,16 @@ input:-webkit-autofill:active {
 --------------------------------------------------------------*/
 .portfolio {
     padding-bottom: 60px;
-  }
-  
-  .portfolio #portfolio-flters {
+}
+
+.portfolio #portfolio-flters {
     padding: 0;
     margin: 0 0 35px 0;
     list-style: none;
     text-align: center;
-  }
-  
-  .portfolio #portfolio-flters li {
+}
+
+.portfolio #portfolio-flters li {
     cursor: pointer;
     margin: 0 12px 5px 12px;
     display: inline-block;
@@ -328,29 +328,28 @@ input:-webkit-autofill:active {
     transition: all 0.3s ease-in-out;
     border-bottom: 2px solid #fff;
     font-family: "Roboto", sans-serif;
-  }
-  
-  .portfolio #portfolio-flters li:hover,
-  .portfolio #portfolio-flters li.filter-active {
+}
+
+.portfolio #portfolio-flters li:hover,
+.portfolio #portfolio-flters li.filter-active {
     border-color: #008080;
     color: #008080;
-  }
-  
-  .portfolio .portfolio-item {
+}
+
+.portfolio .portfolio-item {
     background: #008080;
     overflow: hidden;
-    height: 300px;
     height: 300px;
     position: relative;
     border-radius: 4px;
     margin: 0 0 30px 0;
-  }
-  
-  .portfolio .portfolio-item img {
+}
+
+.portfolio .portfolio-item img {
     transition: all 0.3s ease-in-out;
-  }
-  
-  .portfolio .portfolio-item .portfolio-info {
+}
+
+.portfolio .portfolio-item .portfolio-info {
     opacity: 0;
     position: absolute;
     transition: all 0.3s linear;
@@ -358,33 +357,33 @@ input:-webkit-autofill:active {
     top: 10%;
     left: 0;
     right: 0;
-  }
-  
-  .portfolio .portfolio-item .portfolio-info h3 {
+}
+
+.portfolio .portfolio-item .portfolio-info h3 {
     font-size: 22px;
     color: #fff;
     font-weight: bold;
-  }
-  
-  .portfolio .portfolio-item .portfolio-info a i {
+}
+
+.portfolio .portfolio-item .portfolio-info a i {
     color: rgba(255, 255, 255, 0.6);
     font-size: 28px;
     transition: 0.3s;
-  }
-  
-  .portfolio .portfolio-item .portfolio-info a i:hover {
+}
+
+.portfolio .portfolio-item .portfolio-info a i:hover {
     color: white;
-  }
-  
-  .portfolio .portfolio-item:hover img {
+}
+
+.portfolio .portfolio-item:hover img {
     opacity: 0.6;
     transform: scale(1.1);
-  }
-  
-  .portfolio .portfolio-item:hover .portfolio-info {
+}
+
+.portfolio .portfolio-item:hover .portfolio-info {
     opacity: 1;
     top: calc(50% - 30px);
-  }
+}
 
 /*--------------------------------------------------------------
 # End of Portfolio

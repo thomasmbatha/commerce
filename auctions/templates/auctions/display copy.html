@@ -19,9 +19,9 @@
             <label for="category">Categories:</label>
             <select name="category" id="category" class="form-control">
                 <option value="">All Categories</option>
-                {% comment %} {% for category in categories %}
+                {% for category in categories %}
                     <option value="{{ category.id }}">{{ category.category_name }}</option>
-                {% endfor %} {% endcomment %}
+                {% endfor %}
             </select>
             <button type="submit" class="btn btn-primary mt-2">Filter</button>
         </div>

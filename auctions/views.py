@@ -140,9 +140,11 @@ def index(request):
 
 # View to filter auction listings based on category
 def display(request):
+    selected_category = None
     if request.method == "POST":
         category_id = request.POST.get('category')
         if category_id:
+            selected_category = category_id
             category = get_object_or_404(Category, id=category_id)
             active_listings = AuctionListing.objects.filter(is_active=True, category=category)
         else:
@@ -154,6 +156,7 @@ def display(request):
     return render(request, "auctions/display.html", {
         "listings": active_listings,
         "categories": all_categories,
+        "selected_category": selected_category,
     })
 
 
