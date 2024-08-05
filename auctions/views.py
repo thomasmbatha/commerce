@@ -159,8 +159,12 @@ def display(request):
         "selected_category": selected_category,
     })
 
-
-
+# View to display all closed auction listings
+def closed_auctions_view(request):
+    closed_listings = AuctionListing.objects.filter(is_active=False)
+    return render(request, "auctions/closed_auctions.html", {
+        "closed_listings": closed_listings,
+    })
 
 # View to handle the creation of a new auction listing
 def create_listing(request):

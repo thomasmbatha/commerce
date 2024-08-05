@@ -26,7 +26,7 @@
                     <li><a class="{% if request.resolver_match.url_name == 'display' %}active{% endif %}" href="{% url 'display' %}">Category</a></li>
                     <li><a class="{% if request.resolver_match.url_name == 'watchlist' %}active{% endif %}" href="{% url 'watchlist' %}">Watchlist</a></li>
                     <li><a class="{% if request.resolver_match.url_name == 'create_listing' %}active{% endif %}" href="{% url 'create_listing' %}">Create Auction</a></li>
-                    <li><a href="#">Previous Auction</a></li>
+                    <li><a class="{% if request.resolver_match.url_name == 'closed_auctions' %}active{% endif %}" href="{% url 'closed_auctions' %}">Previous Auctions</a></li>
                 {% endif %}
             </ul>
         </nav>

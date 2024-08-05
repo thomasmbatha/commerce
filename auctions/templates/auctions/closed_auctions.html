@@ -1,0 +1,40 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+Closed Auctions
+{% endblock %}
+
+{% block heading %}
+Closed Auctions
+{% endblock %}
+
+{% block crumbs %}
+{% if closed_listings %}
+    <p>Here are previous auctions</p>
+{% else %}
+    <p>No closed auctions available.</p>
+{% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    {% if closed_listings %}
+        <div class="row">
+            {% for listing in closed_listings %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ listing.image_url }}" class="card-img-top" alt="{{ listing.title }}" style="max-height:370px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ listing.title }}</h5>
+                            <p class="card-text">{{ listing.description }}</p>
+                            <p class="card-text"><strong>Final Bid:</strong> {{ listing.starting_bid.bid }}</p>
+                            <p class="card-text"><strong>Category:</strong> {{ listing.category }}</p>
+                            <p class="card-text"><strong>Owner:</strong> {{ listing.owner }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
