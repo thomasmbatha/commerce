@@ -12,14 +12,14 @@
 {% endblock %}
 
 {% block body %}
- <!-- ======= Portfolio Section ======= -->
- <section class="portfolio mt-5">
+ <!-- ======= Display Section ======= -->
+ <section class="display mt-5">
     <div class="container">
       <form action="{% url 'display' %}" method="POST" class="my-3" id="categoryForm">
         {% csrf_token %}
         <div class="row">
             <div class="col-lg-12">
-                <ul id="portfolio-flters" name="category">
+                <ul id="display-flters" name="category">
                     <li data-filter="*" class="{% if not selected_category %}filter-active{% endif %}" onclick="submitForm('')">All</li>
                     {% for category in categories %}
                         <li data-filter=".filter-app" class="{% if selected_category == category.id|stringformat:"s" %}filter-active{% endif %}" onclick="submitForm('{{ category.id }}')">{{ category.category_name }}</li>
@@ -31,16 +31,16 @@
     </form>
     </form>
     
-      <div class="row portfolio-container listings" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="row display-container listings" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
         {% for listing in listings %}
-            <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
-            <div class="portfolio-item">
+            <div class="col-lg-4 col-md-6 display-wrap filter-app">
+            <div class="display-item">
                 <img src="{{ listing.image_url }}" class="img-fluid" alt="{{ listing.title }}">
-                <div class="portfolio-info">
+                <div class="display-info">
                   <h3><a href="{% url 'listing' id=listing.id %}" class="btn btn-outline">Details</a></h3>
                 <div>
-                    <a href="{{ listing.image_url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                    <a href="{{ listing.image_url }}" data-gallery="displayGallery" class="display-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                    <a href="display-details.html" title="display Details"><i class="bx bx-link"></i></a>
                 </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
       </div>
 
     </div>
-  </section><!-- End Portfolio Section -->
+  </section><!-- End Display Section -->
 
   <script>
     function submitForm(categoryId) {

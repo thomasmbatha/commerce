@@ -16,8 +16,8 @@
 
 {% block body %}
   
-<!-- ======= Blog Single Section ======= -->
-<section id="blog" class="blog">
+<!-- ======= set Single Section ======= -->
+<section id="set" class="set">
   {% if user.is_authenticated and listing.is_active %}
     <div class="container" data-aos="fade-up">
 
@@ -85,9 +85,9 @@
             
             
 
-          </article><!-- End blog entry -->
+          </article><!-- End Set entry -->
 
-          <div class="blog-comments">
+          <div class="set-comments">
 
     <h4 class="comments-count">Comments</h4>
 
@@ -123,15 +123,15 @@
         {% endif %}
     </div>
 
-</div><!-- End blog comments -->
+</div><!-- End Set comments -->
 
 
-        </div><!-- End blog entries list -->
+        </div><!-- End Set entries list -->
 
       </div>
 
     </div>
   {% endif %}
-</section><!-- End Blog Single Section -->
+</section><!-- End Set Single Section -->
 
 {% endblock %}

@@ -14,18 +14,18 @@
 {% block heading %}Welcome to X-Auctions{% endblock %}
 
 {% block body %}
-<!-- ======= Portfolio Section ======= -->
-<section class="portfolio">
+<!-- ======= Home Section ======= -->
+<section class="display">
     <div class="container mt-3">
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="row display-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
             {% for listing in listings %}
-                <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
-                    <div class="portfolio-item">
+                <div class="col-lg-4 col-md-6 display-wrap filter-app">
+                    <div class="display-item">
                         <img src="{{ listing.image_url }}" class="img-fluid" alt="{{ listing.title }}">
-                        <div class="portfolio-info">
+                        <div class="display-info">
                             <h3><a href="{% url 'listing' id=listing.id %}" class="btn btn-outline">Details</a></h3>
                             <div>
-                                <a href="{{ listing.image_url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ listing.title }}"><i class="bx bx-plus"></i></a>
+                                <a href="{{ listing.image_url }}" data-gallery="displayGallery" class="display-lightbox" title="{{ listing.title }}"><i class="bx bx-plus"></i></a>
                             </div>
                         </div>
                     </div>
@@ -33,5 +33,5 @@
             {% endfor %}
         </div>
     </div>
-</section><!-- End Portfolio Section -->
+</section><!-- End Home Section -->
 {% endblock %}
